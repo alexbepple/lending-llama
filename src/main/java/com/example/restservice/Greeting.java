@@ -1,3 +1,3 @@
-package com.example.springboot;
+package com.example.restservice;
 
 public record Greeting(long id, String content) { }
