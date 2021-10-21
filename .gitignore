@@ -1,3 +1,6 @@
+/node_modules/
+
+## Spring Boot bootstrap
 HELP.md
 .gradle
 build/

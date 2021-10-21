@@ -34,7 +34,8 @@ export default {
     /* ... */
   },
   devOptions: {
-    port: 8081
+    port: 8081,
+    open: 'none',
   },
   buildOptions: {
     /* ... */
