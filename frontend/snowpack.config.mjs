@@ -17,7 +17,7 @@ export default {
     {
       src: '/api/.*',
       dest: (req, res) => {
-        req.url = req.url.replace(/^\/api/, '/'); // remove /api prefix
+        req.url = req.url.replace(/^\/api/, ''); // remove /api prefix
 
         return proxy.web(req, res, {
           hostname: 'localhost',
