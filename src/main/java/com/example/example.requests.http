@@ -1,8 +1,8 @@
 
 ###
-GET http://localhost:8080
+GET {{baseUrl}}/
 
 ###
-GET http://localhost:8080/greeting
+GET {{baseUrl}}/greeting
 ###
-GET http://localhost:8080/greeting?name=Welt
+GET {{baseUrl}}/greeting?name=Welt
