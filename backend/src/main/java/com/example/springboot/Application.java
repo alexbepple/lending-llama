@@ -29,11 +29,11 @@ public class Application {
         SplitFactory splitFactory = SplitFactoryBuilder.build("reqt8c55ttivqsitjju67ikte2iamsmggagf", config);
         SplitClient client = splitFactory.client();
         String treatment = client.getTreatment("key","my-first-split");
-        System.out.println(String.format("Flag value on app load: %s", treatment));
+        System.out.printf("Flag value on app load: %s%n", treatment);
 
         client.blockUntilReady();
         String treatment2 = client.getTreatment("key","my-first-split");
-        System.out.println(String.format("Flag value after Split SDK ready: %s", treatment2));
+        System.out.printf("Flag value after Split SDK ready: %s%n", treatment2);
 }
 
 //	@Bean // toggle comment to toggle debug info
