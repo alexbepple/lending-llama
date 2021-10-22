@@ -23,7 +23,3 @@ Your app is ready to be deployed!
 
 No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 
-# Technical decisions
-
-npm over yarn
-* npm is on-board after installing Node.js

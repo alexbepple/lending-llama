@@ -13,3 +13,6 @@ indent_style = tab
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.java]
+indent_size = 4
