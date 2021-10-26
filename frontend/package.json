@@ -4,10 +4,13 @@
     "build": "snowpack build",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1"
   },
+  "devDependencies_doc": {
+    "snowpack": "Versions 3.8.7 & .8 have trouble with different versions of same library, cp. https://github.com/snowpackjs/snowpack/issues?q=is%3Aissue+is%3Aopen+ENOENT, specifically https://github.com/snowpackjs/snowpack/issues/3785"
+  },
   "devDependencies": {
     "@snowpack/plugin-react-refresh": "^2.5.0",
     "http2-proxy": "^5.0.53",
-    "snowpack": "^3.3.7"
+    "snowpack": "^3.8.6"
   },
   "dependencies": {
     "@splitsoftware/splitio": "^10.16.0",
