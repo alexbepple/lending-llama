@@ -22,7 +22,7 @@ export const App = () => {
         <span className={s.emphasis}>{greeting}</span>
       </Card>
       <Card>
-        {count}
+        <span className="mx-3">{count}</span>
         <CircularPlusButton onClick={() => dispatch({type: 'counter/incremented'})}/>
         <CircularMinusButton onClick={() => dispatch({type: 'counter/decremented'})}/>
       </Card>
