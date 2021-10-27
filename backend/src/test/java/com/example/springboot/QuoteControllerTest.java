@@ -39,10 +39,7 @@ public class QuoteControllerTest {
 
     @Test
     public void returnsTheQuoteValue() throws Exception {
-        Quote quote = new Quote();
-        Quote.Value value = new Quote.Value();
-        value.setQuote("xyz");
-        quote.setValue(value);
+        Quote.Value value = new Quote.Value().setQuote("xyz");
 
         mockServer
             .expect(
@@ -52,7 +49,7 @@ public class QuoteControllerTest {
             .andExpect(method(HttpMethod.GET))
             .andRespond(withStatus(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(mapper.writeValueAsString(quote))
+                .body(mapper.writeValueAsString(new Quote().setValue(value)))
             );
 
         assertThat(quoteController.getRandomQuote()).isEqualTo(value);
