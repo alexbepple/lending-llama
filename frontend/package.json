@@ -8,11 +8,15 @@
     "snowpack": "Versions 3.8.7 & .8 have trouble with different versions of same library, cp. https://github.com/snowpackjs/snowpack/issues?q=is%3Aissue+is%3Aopen+ENOENT, specifically https://github.com/snowpackjs/snowpack/issues/3785"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-react-refresh": "^2.5.0",
+    "babel-jest": "^27.3.1",
     "http2-proxy": "^5.0.53",
     "jest": "^27.3.1",
     "postcss": "^8.3.11",
+    "react-test-renderer": "^17.0.2",
     "snowpack": "^3.8.6",
     "tailwindcss": "^2.2.17"
   },
