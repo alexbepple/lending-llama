@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from './App.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {Card} from "./presentation";
+import {Card, CircularMinusButton, CircularPlusButton} from "./presentation";
 
 export const App = () => {
   const [greeting, setGreeting] = useState('')
@@ -23,8 +23,8 @@ export const App = () => {
       </Card>
       <Card>
         {count}
-        <button onClick={() => dispatch({ type: 'counter/incremented' })}>+</button>
-        <button onClick={() => dispatch({ type: 'counter/decremented' })}>-</button>
+        <CircularPlusButton onClick={() => dispatch({type: 'counter/incremented'})}/>
+        <CircularMinusButton onClick={() => dispatch({type: 'counter/decremented'})}/>
       </Card>
     </>
   );
