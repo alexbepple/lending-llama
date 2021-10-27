@@ -17,11 +17,17 @@ export const App = () => {
 
   return (
     <>
-      <div className={s.emphasis}>{greeting}</div>
-      <div>
-        {count}
-        <button onClick={() => dispatch({ type: 'counter/incremented' })}>+</button>
-        <button onClick={() => dispatch({ type: 'counter/decremented' })}>-</button>
+      <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="px-4 py-5 sm:p-6">
+          <span className={s.emphasis}>{greeting}</span>
+        </div>
+      </div>
+      <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="px-4 py-5 sm:p-6">
+          {count}
+          <button onClick={() => dispatch({ type: 'counter/incremented' })}>+</button>
+          <button onClick={() => dispatch({ type: 'counter/decremented' })}>-</button>
+        </div>
       </div>
     </>
   );
