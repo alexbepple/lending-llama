@@ -11,7 +11,7 @@ public class Quote {
 
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public class Value {
+    public static class Value {
         private Long id;
         private String quote;
     }
