@@ -15,7 +15,7 @@ public class QuoteController {
     }
 
     @GetMapping("/quotes/random")
-    public Value getRandomQuote() {
+    public Quote.Value getRandomQuote() {
         String url = "https://quoters.apps.pcfone.io/api/random";
         return restTemplate.getForObject(url, Quote.class).getValue();
     }
