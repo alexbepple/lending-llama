@@ -2,7 +2,7 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1"
+    "test": "jest"
   },
   "devDependencies_doc": {
     "snowpack": "Versions 3.8.7 & .8 have trouble with different versions of same library, cp. https://github.com/snowpackjs/snowpack/issues?q=is%3Aissue+is%3Aopen+ENOENT, specifically https://github.com/snowpackjs/snowpack/issues/3785"
@@ -11,6 +11,7 @@
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-react-refresh": "^2.5.0",
     "http2-proxy": "^5.0.53",
+    "jest": "^27.3.1",
     "postcss": "^8.3.11",
     "snowpack": "^3.8.6",
     "tailwindcss": "^2.2.17"
