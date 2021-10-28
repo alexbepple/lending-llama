@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import s from './App.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {Card, CircularMinusButton, CircularPlusButton} from "./presentation";
+import {CounterCard} from "./CounterCard";
 
 export const App = () => {
   const [greeting, setGreeting] = useState('')
@@ -21,6 +22,7 @@ export const App = () => {
       <Card>
         <span className={s.emphasis}>{greeting}</span>
       </Card>
+      <CounterCard/>
       <Card>
         <span className="mx-3">{count}</span>
         <CircularPlusButton onClick={() => dispatch({type: 'counter/incremented'})}/>

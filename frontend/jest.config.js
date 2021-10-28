@@ -7,4 +7,6 @@ module.exports = {
   // It’s even in the docs: https://jestjs.io/docs/troubleshooting#watchman-issues
   // Yeah, why fix it.
   watchman: false,
+
+  testEnvironment: "jsdom"
 };
