@@ -7,7 +7,7 @@ export const CounterCard = () => {
     <Card>
       <span data-testid='counter-1be3bf29' className="mx-3">{count}</span>
       <CircularMinusButton onClick={() => setCount(x=>x-1)}/>
-      <CircularPlusButton onClick={() => setCount(x=>x+1)}/>
+      <CircularPlusButton onClick={() => setCount(x=>x+1)} data-testid="plus-203c3849"/>
     </Card>
   );
 }
