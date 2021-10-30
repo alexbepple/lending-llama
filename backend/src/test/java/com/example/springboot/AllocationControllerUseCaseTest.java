@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AllocationControllerUseCaseTest {
     @Autowired
@@ -14,7 +16,7 @@ public class AllocationControllerUseCaseTest {
 
     @Test
     public void returnsAllocationWithBestRate() throws Exception {
-        ResponseEntity<String> res = template.getForEntity("/allocation", String.class);
-        Assertions.assertThat(res.getBody()).isEqualTo("foo");
+        ResponseEntity<Allocation> res = template.getForEntity("/allocation", Allocation.class);
+        assertThat(res.getBody()).isEqualTo(new Allocation().setName("Ledn").setRate(6.25));
     }
 }

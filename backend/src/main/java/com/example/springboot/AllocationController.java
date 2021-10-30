@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AllocationController {
+
     @GetMapping("/allocation")
-    public String getAllocation() throws Exception{
-        return "foo";
+    public Allocation getAllocation() {
+        return new Allocation().setName("Ledn").setRate(6.25);
     }
 }
