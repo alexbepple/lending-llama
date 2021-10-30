@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.example;
 
 import lombok.Data;
 

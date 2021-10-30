@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example;
 
 import lombok.Data;
 

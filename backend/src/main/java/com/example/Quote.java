@@ -1,4 +1,4 @@
-package com.example.restservice.quote;
+package com.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

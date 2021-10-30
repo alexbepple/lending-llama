@@ -1,7 +1,5 @@
-package com.example.springboot;
+package com.example;
 
-import com.example.restservice.quote.Quote;
-import com.example.restservice.quote.QuoteController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
