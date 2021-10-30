@@ -7,10 +7,8 @@ import {CounterCard} from "./CounterCard";
 export const App = () => {
   const [greeting, setGreeting] = useState('')
   useEffect(() => {
-    fetch('/api/greeting')
+    fetch('/api/')
       .then(x=>x.text())
-      .then(JSON.parse)
-      .then(x => x.content)
       .then(setGreeting)
   }, [])
 

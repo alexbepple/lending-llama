@@ -3,11 +3,6 @@
 GET {{baseUrl}}/
 
 ###
-GET {{baseUrl}}/greeting
-###
-GET {{baseUrl}}/greeting?name=Welt
-
-###
 GET {{baseUrl}}/quotes/random
 
 ###
