@@ -9,3 +9,8 @@ GET {{baseUrl}}/greeting?name=Welt
 
 ###
 GET {{baseUrl}}/quotes/random
+
+###
+GET {{baseUrl}}/allocation
+
+# => {name: Ledn, rate: 6.25}
