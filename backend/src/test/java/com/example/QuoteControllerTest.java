@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,10 +39,7 @@ public class QuoteControllerTest {
         Quote.Value value = new Quote.Value().setQuote("xyz");
 
         mockServer
-            .expect(
-                ExpectedCount.once(),
-                requestTo(new URI("https://quoters.apps.pcfone.io/api/random"))
-            )
+            .expect(requestTo(new URI("https://quoters.apps.pcfone.io/api/random")))
             .andExpect(method(HttpMethod.GET))
             .andRespond(withStatus(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)
