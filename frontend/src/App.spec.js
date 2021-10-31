@@ -17,6 +17,16 @@ describe('Llending Llama UI', () => {
 
     const c = render(<Provider store={store}><App/></Provider>);
     await waitFor(() => c.getByText('foo', {exact:false}))
-    expect(c.getByTestId('allocation-c020b901')).toHaveTextContent('7%')
+    expect(c.getByTestId('allocation-c020b901')).toHaveTextContent('7.00%') // .00 because of other test
+  })
+
+  it('works with 3 decimal places', async () => {
+    nock(/./)
+      .get('/api/allocation')
+      .reply(200, {name: 'foo', rate: 7.168})
+
+    const c = render(<Provider store={store}><App/></Provider>);
+    await waitFor(() => c.getByText('foo', {exact:false}))
+    expect(c.getByTestId('allocation-c020b901')).toHaveTextContent('7.17%')
   })
 })
