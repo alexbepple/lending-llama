@@ -12,6 +12,13 @@ export const App = () => {
       .then(setGreeting)
   }, [])
 
+  const [allocation, setAllocation] = useState({})
+  useEffect(() => {
+    fetch('/api/allocation')
+      .then(x=>x.json())
+      .then(setAllocation)
+  }, [])
+
   const count = useSelector(x => x.value)
   const dispatch = useDispatch()
 
@@ -19,6 +26,9 @@ export const App = () => {
     <>
       <Card>
         <span className={s.emphasis}>{greeting}</span>
+      </Card>
+      <Card>
+        Best rate: {allocation.rate}% ({allocation.name})
       </Card>
       <CounterCard/>
       <Card>
