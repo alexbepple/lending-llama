@@ -19,7 +19,7 @@ public class AllocationController {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("/allocation")
+    @GetMapping("/best-rate")
     public Allocation getAllocation() {
         String url = "https://priceless-khorana-4dd263.netlify.app/btc-rates.json";
         Platform[] platforms = restTemplate.getForObject(url, Platform[].class);

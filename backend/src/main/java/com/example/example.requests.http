@@ -6,4 +6,4 @@ GET {{baseUrl}}/
 GET {{baseUrl}}/quotes/random
 
 ###
-GET {{baseUrl}}/allocation
+GET {{baseUrl}}/best-rate
