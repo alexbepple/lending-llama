@@ -19,12 +19,12 @@ export const App = () => {
       <Card>
         Best rate: {allocation.rate}% ({allocation.name})
       </Card>
-      <CounterCard/>
-      <Card>
+      <div className="pt-2"><CounterCard/></div>
+      <div className="pt-2"><Card>
         <span className="mx-3">{count}</span>
         <CircularPlusButton onClick={() => dispatch({type: 'counter/incremented'})}/>
         <CircularMinusButton onClick={() => dispatch({type: 'counter/decremented'})}/>
-      </Card>
+      </Card></div>
     </>
   );
 }
