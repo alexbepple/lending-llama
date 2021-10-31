@@ -1,8 +1,5 @@
 
 ###
-GET {{baseUrl}}/
-
-###
 GET {{baseUrl}}/quotes/random
 
 ###
