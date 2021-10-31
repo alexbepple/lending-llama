@@ -9,12 +9,12 @@ import org.springframework.http.ResponseEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AllocationControllerUseCaseTest {
+public class AllocationControllerBestRateTest {
     @Autowired
     private TestRestTemplate template;
 
     @Test
-    public void returnsAllocationWithBestRate() throws Exception {
+    public void returnsBestRate() throws Exception {
         ResponseEntity<Allocation> res = template.getForEntity("/best-rate", Allocation.class);
         assertThat(res.getBody()).isEqualTo(new Allocation().setName("Ledn").setRate(6.25));
     }

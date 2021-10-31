@@ -7,3 +7,6 @@ GET {{baseUrl}}/quotes/random
 
 ###
 GET {{baseUrl}}/best-rate
+
+###
+GET {{baseUrl}}/allocation?amount=1.05
