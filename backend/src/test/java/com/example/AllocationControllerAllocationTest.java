@@ -27,7 +27,7 @@ public class AllocationControllerAllocationTest {
     @Test
 	public void findsBest() throws Exception {
         List<Allocation> expected = Arrays.asList(
-            new Allocation().setName("Ledn").setRate(6.24),
+            new Allocation().setName("Ledn").setRate(6.25),
             new Allocation().setName("BlockFi").setRate(4.5)
         );
         mvc.perform(MockMvcRequestBuilders.get("/allocation?amount=1.1")
