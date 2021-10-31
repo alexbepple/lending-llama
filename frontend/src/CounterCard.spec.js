@@ -1,6 +1,6 @@
 import {fireEvent, render} from "@testing-library/react";
 import {CounterCard} from "./CounterCard";
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom' // extends Jest with .toHaveTextContent
 import React from "react";
 
 describe('CounterCard: counter', () => {

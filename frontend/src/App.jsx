@@ -16,9 +16,9 @@ export const App = () => {
 
   return (
     <>
-      <Card>
+      <div data-testid="allocation-c020b901"><Card>
         Best rate: {allocation.rate}% ({allocation.name})
-      </Card>
+      </Card></div>
       <div className="pt-2"><CounterCard/></div>
       <div className="pt-2"><Card>
         <span className="mx-3">{count}</span>
