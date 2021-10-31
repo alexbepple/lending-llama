@@ -12,7 +12,7 @@ describe('Llending Llama UI', () => {
 
   it('works', async () => {
     nock(/./)
-      .get('/api/allocation')
+      .get(x => x.startsWith('/api/allocation'))
       .reply(200, {name: 'foo', rate: 7})
 
     const c = render(<Provider store={store}><App/></Provider>);
@@ -22,7 +22,7 @@ describe('Llending Llama UI', () => {
 
   it('works with 3 decimal places', async () => {
     nock(/./)
-      .get('/api/allocation')
+      .get(x => x.startsWith('/api/allocation'))
       .reply(200, {name: 'foo', rate: 7.168})
 
     const c = render(<Provider store={store}><App/></Provider>);
