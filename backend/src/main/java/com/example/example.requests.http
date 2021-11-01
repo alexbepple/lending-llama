@@ -1,8 +1,5 @@
 
 ###
-GET {{baseUrl}}/quotes/random
-
-###
 GET {{baseUrl}}/best-rate
 
 ###

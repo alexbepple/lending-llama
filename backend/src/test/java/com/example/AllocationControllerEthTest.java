@@ -12,6 +12,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -19,10 +20,10 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
 @SpringBootTest
-public class QuoteControllerTest {
+public class AllocationControllerEthTest {
 
     @Autowired
-    private QuoteController quoteController;
+    private AllocationController allocationController;
     @Autowired
     private RestTemplate restTemplate;
 
@@ -35,17 +36,22 @@ public class QuoteControllerTest {
     }
 
     @Test
-    public void returnsTheQuoteValue() throws Exception {
-        Quote.Value value = new Quote.Value().setQuote("xyz");
+    public void returnsValue() throws Exception {
+        Platform platform1 = new Platform()
+            .setName("platform1")
+            .setTiers(new Platform.Tier[]{new Platform.Tier().setRate(5.0)});
+        Platform platform2 = new Platform()
+            .setName("platform2")
+            .setTiers(new Platform.Tier[]{new Platform.Tier().setRate(6.0)});
 
         mockServer
-            .expect(requestTo(new URI("https://quoters.apps.pcfone.io/api/random")))
+            .expect(requestTo(new URI("https://priceless-khorana-4dd263.netlify.app/eth-rates.json")))
             .andExpect(method(HttpMethod.GET))
             .andRespond(withStatus(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(mapper.writeValueAsString(new Quote().setValue(value)))
+                .body(mapper.writeValueAsString(List.of(platform1, platform2)))
             );
 
-        assertThat(quoteController.getRandomQuote()).isEqualTo(value);
+        assertThat(allocationController.getBestEthRate()).isEqualTo(new Allocation().setName("platform2").setRate(6.0));
     }
 }
