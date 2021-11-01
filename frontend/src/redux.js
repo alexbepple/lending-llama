@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import {combineReducers, createStore} from 'redux'
+import {errorsReducer} from "./redux-errors";
 
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {
@@ -12,6 +13,9 @@ function counterReducer(state = { value: 0 }, action) {
 }
 
 export const store = createStore(
-  counterReducer,
+  combineReducers({
+    counter: counterReducer,
+    errors: errorsReducer
+  }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

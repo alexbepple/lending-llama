@@ -1,4 +1,5 @@
 import React from "react";
+import {ErrorAlert} from "./ErrorAlert";
 
 // stripped down from starting point: Tailwind UI: "Light nav on gray background"
 // https://tailwindui.com/components/application-ui/application-shells/stacked#component-7022793f3a06d980f7d7f8394a057092
@@ -15,6 +16,8 @@ export const AppShell = ({children}) => (
         </div>
       </div>
     </nav>
+
+    <ErrorAlert/>
 
     <div className="py-10">
       <main>

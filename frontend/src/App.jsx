@@ -5,6 +5,8 @@ import {CounterCard} from "./CounterCard";
 import {AllocationsTable} from "./presentation/AllocationsTable";
 
 export const App = () => {
+  const dispatch = useDispatch()
+
   const [amount, setAmount] = useState(0.1);
 
   const [bestAllocation, setBestAllocation] = useState({})
@@ -17,12 +19,16 @@ export const App = () => {
   const [allocations, setAllocations] = useState([])
   useEffect(() => {
     fetch(`/api/allocations?amount=${amount}`)
+      .then(async x => {
+        if (x.status >= 400) {throw new Error(await x.text())}
+        return x
+      })
       .then(x=>x.json())
       .then(setAllocations)
+      .catch(e => dispatch({type: 'errors/added', payload: e.message}))
   }, [amount])
 
   const count = useSelector(x => x.value)
-  const dispatch = useDispatch()
 
   return (
     <>
