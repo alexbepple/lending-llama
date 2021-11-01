@@ -14,6 +14,7 @@ describe('Llending Llama UI', () => {
     nock(/./)
       .get('/api/best-rate')
       .reply(200, {name: 'foo', rate: 7})
+    nock(/./).get(x => x.includes('/allocation')).reply(200, [])
 
     const c = render(<Provider store={store}><App/></Provider>);
     await waitFor(() => c.getByText('foo', {exact:false}))
@@ -24,6 +25,7 @@ describe('Llending Llama UI', () => {
     nock(/./)
       .get('/api/best-rate')
       .reply(200, {name: 'foo', rate: 7.168})
+    nock(/./).get(x => x.includes('/allocation')).reply(200, [])
 
     const c = render(<Provider store={store}><App/></Provider>);
     await waitFor(() => c.getByText('foo', {exact:false}))
