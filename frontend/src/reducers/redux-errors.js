@@ -1,8 +1,10 @@
+import {ERRORS_ADDED, ERRORS_DISMISSED_FIRST} from "../constants/errors";
+
 export const errorsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'errors/added':
+    case ERRORS_ADDED:
       return [...state, action.payload]
-    case 'errors/dismissed-first':
+    case ERRORS_DISMISSED_FIRST:
       return state.slice(1)
     default:
       return state

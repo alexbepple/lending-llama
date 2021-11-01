@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from 'redux'
-import {errorsReducer} from "./redux-errors";
+import {errorsReducer} from "./reducers/redux-errors";
 
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {

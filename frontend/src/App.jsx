@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Card, CircularMinusButton, CircularPlusButton, InputWithLabel} from "./presentation";
 import {CounterCard} from "./CounterCard";
 import {AllocationsTable} from "./presentation/AllocationsTable";
+import {errorsAdded} from "./actions/errors";
 
 export const App = () => {
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export const App = () => {
       })
       .then(x=>x.json())
       .then(setAllocations)
-      .catch(e => dispatch({type: 'errors/added', payload: e.message}))
+      .catch(e => dispatch(errorsAdded(e.message)))
   }, [amount])
 
   const count = useSelector(x => x.value)
