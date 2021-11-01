@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Card, CircularMinusButton, CircularPlusButton, InputWithLabel} from "./presentation";
 import {CounterCard} from "./CounterCard";
+import {AllocationsTable} from "./presentation/AllocationsTable";
 
 export const App = () => {
   const [amount, setAmount] = useState(0.1);
@@ -41,8 +42,7 @@ export const App = () => {
             placeholder="Amount of BTC you want to lend"
             onChange={e => setAmount(e.target.value)}
           />
-          Allocations:
-          {allocations.map(a => <li key={a.name+a.rate}>{a.rate && a.rate.toFixed(2)}% ({a.name})</li>)}
+          <div className="pt-4"><AllocationsTable allocations={allocations}/></div>
         </Card>
       </div>
       <div className="pt-2"><CounterCard/></div>
