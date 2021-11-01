@@ -30,6 +30,7 @@ describe('Llending Llama UI', () => {
 
     const c = render(<Provider store={store}><App/></Provider>);
     await waitFor(() => c.getByText('foo', {exact:false}))
+    await waitFor(() => c.getByText('7.17', {exact:false}))
     await new Promise((resolve) => setTimeout(resolve, 10));
     expect(c.getByTestId('allocation-c020b901')).toHaveTextContent('7.17%')
   })
