@@ -1,7 +1,10 @@
 import {SplitFactory} from "@splitsoftware/splitio";
+import {store} from "./redux";
+import {featureChanged} from "./actions/features";
 
-const features = {
-  first: "my-first-split"
+export const FEATURES = {
+  FIRST: "my-first-split",
+  MULTIPLE_TIERS: "multiple-tiers"
 }
 
 const factory = SplitFactory({
@@ -10,10 +13,13 @@ const factory = SplitFactory({
     key: 'key'
   }
 });
-
 const client = factory.client();
-client.on(client.Event.SDK_READY, function() {
-  console.log('Flag value after Split SDK ready:', client.getTreatment(features.first))
-});
 
-console.log('Flag value on app load:', client.getTreatment(features.first))
+client.on(client.Event.SDK_READY, () => {
+  store.dispatch(featureChanged(FEATURES.FIRST, client.getTreatment(FEATURES.FIRST)))
+  store.dispatch(featureChanged(FEATURES.MULTIPLE_TIERS, client.getTreatment(FEATURES.MULTIPLE_TIERS)))
+});
+client.on(client.Event.SDK_UPDATE, () => {
+  store.dispatch(featureChanged(FEATURES.FIRST, client.getTreatment(FEATURES.FIRST)))
+  store.dispatch(featureChanged(FEATURES.MULTIPLE_TIERS, client.getTreatment(FEATURES.MULTIPLE_TIERS)))
+});
