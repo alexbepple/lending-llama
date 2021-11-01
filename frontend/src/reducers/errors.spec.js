@@ -1,4 +1,4 @@
-import {errorsReducer} from "./redux-errors";
+import {errorsReducer} from "./errors";
 import {errorsAdded, errorsDismissedFirst} from "../actions/errors";
 
 describe('Errors reducer', () => {

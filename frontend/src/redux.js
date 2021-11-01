@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from 'redux'
-import {errorsReducer} from "./reducers/redux-errors";
+import {errorsReducer} from "./reducers/errors";
 
 export const store = createStore(
   combineReducers({
