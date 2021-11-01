@@ -12,9 +12,9 @@ const ErrorAlertPresentation = ({msg, onDismiss}) => (
       <div className="flex-shrink-0">
         <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true"/>
       </div>
-      <div className="ml-3">
+      <div className="ml-3 w-full">
         <h3 className="text-sm font-medium text-red-800">Something went wrong</h3>
-        <div className="mt-2 text-sm text-red-700">
+        <div className="mt-2 text-sm text-red-700 overflow-auto max-h-96">
           <p>{msg}</p>
         </div>
         <div className="mt-4">
