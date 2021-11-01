@@ -4,20 +4,21 @@ import {Card, InputWithLabel} from "./presentation";
 import {AllocationsTable} from "./presentation/AllocationsTable";
 import {errorsAdded} from "./actions/errors";
 import {FEATURES} from "./features";
+import {bestRateFetched, multipleTiersFetched} from "./actions/allocations";
 
 export const App = () => {
   const dispatch = useDispatch()
 
   const [amount, setAmount] = useState(0.1);
 
-  const [bestAllocation, setBestAllocation] = useState({})
+  const bestAllocation = useSelector(x=>x.allocations.bestRate)
   useEffect(() => {
     fetch(`/api/best-rate`)
       .then(x=>x.json())
-      .then(setBestAllocation)
+      .then(x=>dispatch(bestRateFetched(x)))
   }, [])
 
-  const [allocations, setAllocations] = useState([])
+  const allocations = useSelector(x=>x.allocations.multipleTiers)
   useEffect(() => {
     fetch(`/api/allocations?amount=${amount}`)
       .then(async x => {
@@ -25,7 +26,7 @@ export const App = () => {
         return x
       })
       .then(x=>x.json())
-      .then(setAllocations)
+      .then(x=>dispatch(multipleTiersFetched(x)))
       .catch(e => dispatch(errorsAdded(e.message)))
   }, [amount])
 
