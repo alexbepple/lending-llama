@@ -12,7 +12,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.concurrent.TimeoutException;
 
 @SpringBootApplication(scanBasePackages = "com.example")
 public class Application {
@@ -21,25 +24,20 @@ public class Application {
 		System.setProperty("spring.devtools.livereload.enabled", "false");
 		System.setProperty("logging.level.web", "DEBUG");
 		SpringApplication.run(Application.class, args);
-
-        loadFeatureFlags();
 	}
 
-    static void loadFeatureFlags() throws Exception {
+    @Bean
+    public SplitClient getSplitClient() throws IOException, URISyntaxException, InterruptedException, TimeoutException {
         SplitClientConfig config = SplitClientConfig.builder()
             .setBlockUntilReadyTimeout(10000)
             .build();
         SplitFactory splitFactory = SplitFactoryBuilder.build("reqt8c55ttivqsitjju67ikte2iamsmggagf", config);
-        SplitClient client = splitFactory.client();
-        String treatment = client.getTreatment("key","my-first-split");
-        System.out.printf("Flag value on app load: %s%n", treatment);
+        SplitClient splitClient = splitFactory.client();
+        splitClient.blockUntilReady();
+        return splitClient;
+    }
 
-        client.blockUntilReady();
-        String treatment2 = client.getTreatment("key","my-first-split");
-        System.out.printf("Flag value after Split SDK ready: %s%n", treatment2);
-}
-
-//	@Bean // toggle comment to toggle debug info
+    //	@Bean // toggle comment to toggle debug info
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 			System.out.println("Beans provided by Spring Boot:");
