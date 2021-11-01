@@ -15,7 +15,7 @@ export const App = () => {
 
   const [allocations, setAllocations] = useState([])
   useEffect(() => {
-    fetch(`/api/allocation?amount=${amount}`)
+    fetch(`/api/allocations?amount=${amount}`)
       .then(x=>x.json())
       .then(setAllocations)
   }, [amount])

@@ -28,7 +28,7 @@ public class AllocationController {
         return new Allocation().setName(tier1.getName()).setRate(tier1.getRate());
     }
 
-    @GetMapping("/allocation")
+    @GetMapping("/allocations")
     public Stream<Allocation> getAllocation(@RequestParam Double amount) {
         List<PlatformTier> platformTiers = getPlatformTiersDescByRate();
 

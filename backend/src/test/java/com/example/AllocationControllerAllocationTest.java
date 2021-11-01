@@ -30,7 +30,7 @@ public class AllocationControllerAllocationTest {
             new Allocation().setName("Ledn").setRate(6.25),
             new Allocation().setName("BlockFi").setRate(4.5)
         );
-        mvc.perform(MockMvcRequestBuilders.get("/allocation?amount=1.1")
+        mvc.perform(MockMvcRequestBuilders.get("/allocations?amount=1.1")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().json(mapper.writeValueAsString(expected)));
