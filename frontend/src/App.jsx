@@ -27,7 +27,7 @@ export const App = () => {
     <>
       <div data-testid="allocation-c020b901">
         <Card>
-          Best rate: {bestAllocation.rate && bestAllocation.rate.toFixed(2)} ({bestAllocation.name})
+          Best rate: {bestAllocation.rate && bestAllocation.rate.toFixed(2)}% ({bestAllocation.name})
         </Card>
       </div>
       <div className="pt-2">
