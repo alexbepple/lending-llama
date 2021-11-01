@@ -4,14 +4,21 @@ import {Card, CircularMinusButton, CircularPlusButton, InputWithLabel} from "./p
 import {CounterCard} from "./CounterCard";
 
 export const App = () => {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState(0.1);
 
-  const [allocation, setAllocation] = useState({})
+  const [bestAllocation, setBestAllocation] = useState({})
   useEffect(() => {
     fetch(`/api/best-rate`)
       .then(x=>x.json())
-      .then(setAllocation)
+      .then(setBestAllocation)
   }, [])
+
+  const [allocations, setAllocations] = useState([])
+  useEffect(() => {
+    fetch(`/api/allocation?amount=${amount}`)
+      .then(x=>x.json())
+      .then(setAllocations)
+  }, [amount])
 
   const count = useSelector(x => x.value)
   const dispatch = useDispatch()
@@ -20,7 +27,7 @@ export const App = () => {
     <>
       <div data-testid="allocation-c020b901">
         <Card>
-          Best rate: {allocation.rate && allocation.rate.toFixed(2)}% ({allocation.name})
+          Best rate: {bestAllocation.rate && bestAllocation.rate.toFixed(2)}% ({bestAllocation.name})
         </Card>
       </div>
       <div className="pt-2">
@@ -29,9 +36,13 @@ export const App = () => {
             name="amount"
             label="BTC Amount"
             type="number"
+            value={amount}
+            step="0.1"
             placeholder="Amount of BTC you want to lend"
             onChange={e => setAmount(e.target.value)}
           />
+          Allocations:
+          {allocations.map(a => <li key={a.name+a.rate}>{a.rate && a.rate.toFixed(2)}% ({a.name})</li>)}
         </Card>
       </div>
       <div className="pt-2"><CounterCard/></div>
