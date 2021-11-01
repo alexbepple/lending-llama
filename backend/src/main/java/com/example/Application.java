@@ -33,7 +33,7 @@ public class Application {
             .build();
         SplitFactory splitFactory = SplitFactoryBuilder.build("reqt8c55ttivqsitjju67ikte2iamsmggagf", config);
         SplitClient splitClient = splitFactory.client();
-        splitClient.blockUntilReady();
+//        splitClient.blockUntilReady();
         return splitClient;
     }
 
