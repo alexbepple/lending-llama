@@ -49,6 +49,11 @@ export const App = () => {
           <div className="pt-4"><AllocationsTable allocations={allocations}/></div>
         </Card>
       </div>
+      <div className="pt-2">
+        <Card>
+          <p>WAGMI</p>
+        </Card>
+      </div>
     </>
   );
 }
