@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Card, CircularMinusButton, CircularPlusButton, InputWithLabel} from "./presentation";
-import {CounterCard} from "./CounterCard";
+import {useDispatch} from "react-redux";
+import {Card, InputWithLabel} from "./presentation";
 import {AllocationsTable} from "./presentation/AllocationsTable";
 import {errorsAdded} from "./actions/errors";
 
@@ -29,8 +28,6 @@ export const App = () => {
       .catch(e => dispatch(errorsAdded(e.message)))
   }, [amount])
 
-  const count = useSelector(x => x.value)
-
   return (
     <>
       <div data-testid="allocation-c020b901">
@@ -52,12 +49,6 @@ export const App = () => {
           <div className="pt-4"><AllocationsTable allocations={allocations}/></div>
         </Card>
       </div>
-      <div className="pt-2"><CounterCard/></div>
-      <div className="pt-2"><Card>
-        <span className="mx-3">{count}</span>
-        <CircularPlusButton onClick={() => dispatch({type: 'counter/incremented'})}/>
-        <CircularMinusButton onClick={() => dispatch({type: 'counter/decremented'})}/>
-      </Card></div>
     </>
   );
 }
