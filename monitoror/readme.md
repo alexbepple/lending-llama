@@ -4,6 +4,7 @@ View status of local dev servers and CI build.
 Usage
 
 * download binary to this dir (https://monitoror.com/download/)
+  * you may find `justfile` useful
 * `> cp .env_template .env`
 * Create GH token for Monitoror  
 https://github.com/settings/tokens/new?description=Monitoror&scopes=repo:status  
