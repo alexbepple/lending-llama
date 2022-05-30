@@ -10,5 +10,5 @@ https://github.com/settings/tokens/new?description=Monitoror&scopes=repo:status
 and set it in `.env`
 * `> ./monitoror`
 
-Unfortunately, _monitorer_ does not seem to like binary in other location.  
+Unfortunately, _monitoror_ does not seem to like binary in other location.  
 Possible alternative: use Docker image.
