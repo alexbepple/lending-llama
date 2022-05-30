@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,7 +25,7 @@ public class AllocationControllerAllocationTest {
 
     @Test
 	public void findsBest() throws Exception {
-        List<Allocation> expected = Arrays.asList(
+        var expected = Arrays.asList(
             new Allocation().setName("Ledn").setRate(6.25),
             new Allocation().setName("BlockFi").setRate(4.5)
         );

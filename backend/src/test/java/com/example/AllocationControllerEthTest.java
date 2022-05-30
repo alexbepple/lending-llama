@@ -37,10 +37,10 @@ public class AllocationControllerEthTest {
 
     @Test
     public void returnsValue() throws Exception {
-        Platform platform1 = new Platform()
+        var platform1 = new Platform()
             .setName("platform1")
             .setTiers(new Platform.Tier[]{new Platform.Tier().setRate(5.0)});
-        Platform platform2 = new Platform()
+        var platform2 = new Platform()
             .setName("platform2")
             .setTiers(new Platform.Tier[]{new Platform.Tier().setRate(6.0)});
 

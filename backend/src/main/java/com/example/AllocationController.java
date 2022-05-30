@@ -29,20 +29,20 @@ public class AllocationController {
 
     @GetMapping("/best-rate")
     public Allocation getBestRate() {
-        PlatformTier tier1 = getPlatformTiersDescByRate().get(0);
+        var tier1 = getPlatformTiersDescByRate().get(0);
         return new Allocation().setName(tier1.getName()).setRate(tier1.getRate());
     }
 
     @GetMapping("/allocations")
     public Stream<Allocation> getAllocation(@RequestParam Double amount) throws Exception {
-        String treatment = splitClient.getTreatment("key","multiple-tiers");
+        var treatment = splitClient.getTreatment("key","multiple-tiers");
         if (!"on".equals(treatment)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-        List<PlatformTier> platformTiers = getPlatformTiersDescByRate();
+        var platformTiers = getPlatformTiersDescByRate();
 
-        int count = (int) IntStream.range(1, platformTiers.size())
+        var count = (int) IntStream.range(1, platformTiers.size())
             .takeWhile(i -> platformTiers.stream().limit(i).mapToDouble(PlatformTier::getMax).sum() < amount)
             .count();
 
@@ -52,8 +52,8 @@ public class AllocationController {
     }
 
     private List<PlatformTier> getPlatformTiersDescByRate() {
-        String url = "https://priceless-khorana-4dd263.netlify.app/btc-rates.json";
-        Platform[] platforms = restTemplate.getForObject(url, Platform[].class);
+        var url = "https://priceless-khorana-4dd263.netlify.app/btc-rates.json";
+        var platforms = restTemplate.getForObject(url, Platform[].class);
         return stream(platforms).flatMap(p -> stream(p.getTiers()).map(t ->
                 new PlatformTier()
                     .setName(p.getName())
@@ -65,18 +65,18 @@ public class AllocationController {
     }
 
     public Allocation getBestEthRate() {
-        String url = "https://priceless-khorana-4dd263.netlify.app/eth-rates.json";
-        Platform[] platforms = restTemplate.getForObject(url, Platform[].class);
-        List<PlatformTier> platformTiers = stream(platforms).flatMap(p -> stream(p.getTiers()).map(t ->
+        var url = "https://priceless-khorana-4dd263.netlify.app/eth-rates.json";
+        var platforms = restTemplate.getForObject(url, Platform[].class);
+        var platformTiers = stream(platforms).flatMap(p -> stream(p.getTiers()).map(t ->
                 new PlatformTier()
                     .setName(p.getName())
                     .setRate(t.getRate())
                     .setMax(t.getMax())
             ))
             .sorted(Comparator.comparingDouble(PlatformTier::getRate).reversed())
-            .collect(Collectors.toList());
+            .toList();
 
-        PlatformTier tier1 = platformTiers.get(0);
+        var tier1 = platformTiers.get(0);
         return new Allocation().setName(tier1.getName()).setRate(tier1.getRate());
     }
 }

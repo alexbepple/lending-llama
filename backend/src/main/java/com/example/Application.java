@@ -28,11 +28,11 @@ public class Application {
 
     @Bean
     public SplitClient getSplitClient() throws IOException, URISyntaxException, InterruptedException, TimeoutException {
-        SplitClientConfig config = SplitClientConfig.builder()
+        var config = SplitClientConfig.builder()
             .setBlockUntilReadyTimeout(10000)
             .build();
-        SplitFactory splitFactory = SplitFactoryBuilder.build("reqt8c55ttivqsitjju67ikte2iamsmggagf", config);
-        SplitClient splitClient = splitFactory.client();
+        var splitFactory = SplitFactoryBuilder.build("reqt8c55ttivqsitjju67ikte2iamsmggagf", config);
+        var splitClient = splitFactory.client();
 //        splitClient.blockUntilReady();
         return splitClient;
     }
