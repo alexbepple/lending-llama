@@ -7,6 +7,9 @@ import {FEATURES} from "./features";
 import {bestRateFetched, multipleTiersFetched} from "./actions/allocations";
 
 export const App = () => {
+  const features = useSelector(x => x.features)
+  const featureMultipleTiersOn = features[FEATURES.MULTIPLE_TIERS] === "on";
+
   const dispatch = useDispatch()
 
   const [amount, setAmount] = useState(0.1);
@@ -20,6 +23,8 @@ export const App = () => {
 
   const allocations = useSelector(x=>x.allocations.multipleTiers)
   useEffect(() => {
+    if (!featureMultipleTiersOn) { return }
+
     fetch(`/api/allocations?amount=${amount}`)
       .then(async x => {
         if (x.status >= 400) {throw new Error(await x.text())}
@@ -30,8 +35,6 @@ export const App = () => {
       .catch(e => dispatch(errorsAdded(e.message)))
   }, [amount])
 
-  const features = useSelector(x => x.features)
-
   return (
     <>
       <div data-testid="allocation-c020b901">
@@ -39,7 +42,7 @@ export const App = () => {
           Best rate: {bestAllocation.rate && bestAllocation.rate.toFixed(2)}% ({bestAllocation.name})
         </Card>
       </div>
-      {features[FEATURES.MULTIPLE_TIERS] === "on"
+      {featureMultipleTiersOn
         ? <div className="pt-2">
             <Card>
               <InputWithLabel
