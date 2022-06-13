@@ -61,11 +61,11 @@ Check Gradle execution settings
 Choices:
 * npm over yarn
   * npm is on-board after installing Node.js
-* Java _11 Zulu_
-  * Even though slightly outdated, it’s default for client. Therefore, less risk of incompatibilities.
+* Java _17 Zulu_
+  * Default for newer services at client. Therefore, less risk of incompatibilities.
   * Client seems to be using SDKMAN + Zulu.
-    SDKMAN is not an option; it provides no Node.   
-    SDKMAN and asdf versioning for Zulu differ! SDKMAN gives the underlying OpenJDK version; whereas asdf the Zulu version (cp https://www.azul.com/downloads/?version=java-11-lts&package=jdk). 
+    SDKMAN is not an option for me; it provides no Node.   
+    SDKMAN and asdf versioning for Zulu differ! SDKMAN gives the underlying OpenJDK version; whereas asdf the Zulu version (cp https://www.azul.com/downloads/?version=java-11-lts&package=jdk). GitHub’s `actions/setup-java@v2` uses same versioning as SDKMAN. 
 
 ---
 
