@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "concurrently --kill-others --prefix-colors green,blue --names back,front \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "concurrently --kill-others --prefix-colors green,blue npm:dev:*",
     "dev:backend": "cd backend && ./gradlew bootRun",
     "dev:frontend": "cd frontend && npm start",
     "test": "concurrently --prefix-colors green,blue npm:test:*",
