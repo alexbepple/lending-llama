@@ -33,7 +33,7 @@ export const App = () => {
       .then(x=>x.json())
       .then(x=>dispatch(multipleTiersFetched(x)))
       .catch(e => dispatch(errorsAdded(e.message)))
-  }, [amount])
+  }, [featureMultipleTiersOn, amount])
 
   return (
     <>
